@@ -4,7 +4,7 @@ const choices = ["Rock", "Paper", "Scissors"];
 
 function getComputerChoice() {
     const choice = Math.floor(Math.random() * choices.length);
-    return  choice[choices].toLowerCase();
+    return  choices[choice].toLowerCase();
 }
 
 
@@ -47,7 +47,7 @@ function evaluateRound(playerChoice, computerChoice) {
 
 function playRound(playerChoice, computerChoice) {
     const result = evaluateRound(playerChoice, computerChoice);
-    if (resuly == "draw") {
+    if (result == "draw") {
         return `Draw! Double ${playerChoice} means no winner.`
     } else if(result == "player") {
         return `You win! ${playerChoice} beats ${computerChoice}.`
