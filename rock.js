@@ -88,4 +88,15 @@ function playGame() {
 }
 
 
-playGame();
+let play = true;
+
+while(play == true) {
+    playGame();
+    const playAgain = prompt("Play again? Enter y for yes or n to exit.")
+    if(playAgain.toLowerCase() == "y") {
+        continue;
+    } else {
+        play = false;
+        break;
+    }
+}
