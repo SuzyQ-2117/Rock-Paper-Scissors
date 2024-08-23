@@ -4,10 +4,10 @@ const pointsToWin = 3;
 
 
 function getComputerChoice() {
-    const choice = "scissors"
-    return choice;
-    // const choice = Math.floor(Math.random() * choices.length);
-    // return  choices[choice].toLowerCase();
+    // const choice = "scissors"
+    // return choice;
+    const choice = Math.floor(Math.random() * choices.length);
+    return  choices[choice].toLowerCase();
 }
 
 
