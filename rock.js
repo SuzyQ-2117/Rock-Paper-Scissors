@@ -1,10 +1,13 @@
 const choices = ["Rock", "Paper", "Scissors"];
+const pointsToWin = 3;
 
 
 
 function getComputerChoice() {
-    const choice = Math.floor(Math.random() * choices.length);
-    return  choices[choice].toLowerCase();
+    const choice = "scissors"
+    return choice;
+    // const choice = Math.floor(Math.random() * choices.length);
+    // return  choices[choice].toLowerCase();
 }
 
 
@@ -58,24 +61,7 @@ function playRound(playerChoice, computerChoice) {
 
 
 
-function playGame() {
-    let playerScore = 0;
-    let computerScore = 0;
-
-    console.log("Rock, Paper Scissors: best of 5. Let's go!");
-
-    for (let i=0; i < 5; i++) {
-        const playerChoice = getPlayerChoice();
-        const computerChoice = getComputerChoice();
-        console.log(playRound(playerChoice, computerChoice));
-        console.log("-----------------------------")
-        if(evaluateRound(playerChoice, computerChoice) == "player") {
-            playerScore++;
-        } else if(evaluateRound(playerChoice, computerChoice) == "computer") {
-            computerScore++;
-        }
-    }
-
+function evaluateGame(playerScore, computerScore){
     console.log("Game over.")
 
     if(playerScore > computerScore) {
@@ -85,6 +71,37 @@ function playGame() {
     } else {
         console.log("It's a draw!")
     }
+}
+
+
+
+function playGame() {
+    let playerScore = 0;
+    let computerScore = 0;
+
+    console.log(`Rock, Paper Scissors: first to win ${pointsToWin} rounds!`);
+    console.log("Let's go!");
+
+    for (let i=0; ; i++) {
+        const playerChoice = getPlayerChoice();
+        const computerChoice = getComputerChoice();
+        console.log(playRound(playerChoice, computerChoice));
+        console.log("-----------------------------")
+        if(evaluateRound(playerChoice, computerChoice) == "player") {
+            playerScore++;
+            if(playerScore>=pointsToWin) {
+                evaluateGame(playerScore, computerScore);
+                break;
+            }
+        } else if(evaluateRound(playerChoice, computerChoice) == "computer") {
+            computerScore++;
+            if(computerScore>=pointsToWin) {
+                evaluateGame(playerScore, computerScore)
+                break;
+            }
+        }
+    }
+
 }
 
 
